@@ -5,17 +5,19 @@ function calcularIMC() {
 
     const nome = nomeInput.value;
     const peso = parseFloat(pesoInput.value);
-    const altura = parseFloat(alturaInput.value);
+    const alturaCm = parseFloat(alturaInput.value);
+
+    const alturaM = alturaCm / 100;
 
     const resultadoElement = document.getElementById('resultado');
     const resultadoContainer = document.getElementById('resultado-container');
 
-    if (isNaN(peso) || isNaN(altura) || peso <= 0 || altura <= 0) {
+    if (isNaN(peso) || isNaN(alturaCm) || peso <= 0 || alturaCm <= 0) {
         alert('Por favor, digite valores válidos para peso e altura.');
         return;
     }
 
-    const imc = calcularIMCValor(peso, altura);
+    const imc = calcularIMCValor(peso, alturaM);
     const resultadoTexto = gerarTextoResultado(nome, imc);
 
     resultadoElement.innerHTML = resultadoTexto;
